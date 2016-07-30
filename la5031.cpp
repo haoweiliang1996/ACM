@@ -21,6 +21,12 @@ struct Cmd{
     char op;
     int x1,x2;
 }cmd[maxc];
+struct Node{
+    bool operator <()
+    {
+
+    }
+};
 
 int main()
 {
