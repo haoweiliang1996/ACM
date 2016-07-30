@@ -1,10 +1,3 @@
-/*************************************************************************
-	> File Name: la5031.cpp
-	> Author:HaoWei 
-	> Mail:liang199611@outlook.com 
-	> Created Time: 2016年07月29日 星期五 15时10分54秒
- ************************************************************************/
-
 #include<iostream>
 #include<cstdio>
 #include<algorithm>
@@ -31,10 +24,6 @@ struct Cmd{
 
 int main()
 {
-<<<<<<< HEAD
-
-    cout<<"new one"<<endl;
-=======
     while(cin>>N>>M)
     {
         rep(i,N) scanf("%d",&values[i]);
@@ -55,6 +44,5 @@ int main()
 
          }
     }
->>>>>>> 13ccae684c1bb082c8906d36c546b91c5d24827b
     return 0;
 }
