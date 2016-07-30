@@ -15,7 +15,7 @@ using namespace std;
 
 int main()
 {
-    freopen("in.txt","r",stdin);
 
+    cout<<"new one"<<endl;
     return 0;
 }
