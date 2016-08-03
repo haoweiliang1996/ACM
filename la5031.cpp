@@ -42,7 +42,7 @@ struct Node{
     {
         s=1;
         if(ch[0]!=NULL) s+=ch[0]->s;
-        if(ch[1]!-NULL) s+=ch[1]->s;
+        if(ch[1]!=NULL) s+=ch[1]->s;
     }
 };
 
@@ -71,14 +71,21 @@ void remove(Node* o,int x)
     {
         if(o->ch[0]!=NULL&&o->ch[1]!=NULL) 
         {
-            
+            int d2=(o->ch[0]->r<o->ch[1]->r)? 0:1;
+            rotate(o,d2);
+            remove(o->ch[d2],x);
         }
         else {
             if(o->ch[0]==NULL) o=o->ch[1];
             else if(o->ch[1]==NULL) o=o->ch[0];
+            //直接用孩子节点替代它,不会出现堆节点不满足性质
+            o=NULL;
+            delete o;
         }
     }
     else remove(o->ch[d],x);
+
+    if(o!=NULL) o->maintain();
 }
 
 int kth(Node *o,int k)
