@@ -3,6 +3,7 @@
 #include<algorithm>
 #include<cstring>
 #include<utility>
+#include<cstdlib>
 
 using namespace std;
 #define rep(i,n) for(int i=0;i<n;i++)
@@ -22,12 +23,115 @@ struct Cmd{
     int x1,x2;
 }cmd[maxc];
 struct Node{
+    Node *ch[2];
+    int r;
+    int v;
+    int s;
+    Node(int v):(v){
+        ch[0]=ch[1]=NULL;
+        s=1;
+        r=rand();
+    }
+
     bool operator <()
     {
 
     }
+    
+    void maintain()
+    {
+        s=1;
+        if(ch[0]!=NULL) s+=ch[0]->s;
+        if(ch[1]!-NULL) s+=ch[1]->s;
+    }
 };
 
+void rotate(Node *o,int d)
+{
+    
+}
+
+void insert(Node* o,int x)
+{
+    if(o==NULL) o=new Node(x);
+    else {
+        //int d=o->cmp(x); //可能会有相同的节点
+        int d=(x<o->v? 0:1);
+        insert(o,d);
+        if(o->ch[d]->r>o->r) roate(o,d^1);
+    }
+    
+    o->maintain();
+}
+
+void remove(Node* o,int x)
+{
+    int d=o->cmp(x);
+    if(d==-1)
+    {
+        if(o->ch[0]!=NULL&&o->ch[1]!=NULL) 
+        {
+            
+        }
+        else {
+            if(o->ch[0]==NULL) o=o->ch[1];
+            else if(o->ch[1]==NULL) o=o->ch[0];
+        }
+    }
+    else remove(o->ch[d],x);
+}
+
+int kth(Node *o,int k)
+{
+    if(o==NULL||k<=0||o->s<k) return 0;
+    int s=((o->ch[1] ==NULL)? 0:o->ch[1]->s );
+    if(k==s+1) return o->v;
+    else if(k<=s) return kth(o->ch[1],k);
+    else return kth(o->ch[0],k-s-1);
+}
+
+//un
+int pre[maxn];
+Node* node[maxn];
+
+int unfind(int x)
+{
+    return pre[x]==x ? x:unfind(pre[x]);
+}
+
+void uninit(int n)
+{
+    rep(i,n+1) pre[i]=i;
+}
+
+void mergeto(Node* &src,Node* &des)
+{
+
+}
+
+void remove()
+{
+
+}
+void add_Edge(int x)
+{
+    int ru=unfind(x.first),rv=unfind(x.second);
+    if(ru==rv) return;
+    if(node[ru]->s>node[rv]->s) {
+        pre[]
+    }
+}
+
+int query(int x,int k)
+{
+    int rx=unfind(x);
+    return kth()
+}
+
+void chage_value()
+{
+    
+}
 int main()
 {
     while(cin>>N>>M)
